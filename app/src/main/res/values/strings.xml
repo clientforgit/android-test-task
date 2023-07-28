@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">test_task</string>
+    <string name="title_activity_count">CountActivity</string>
+    <string name="result_count">Result count: %1$d</string>
+    <string name="open">Open counter</string>
+    <string name="counter_amount">Counter: %1$d</string>
+    <string name="increase_counter">Increase counter</string>
+    <string name="title_activity_container"/>
+</resources>

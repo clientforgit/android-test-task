@@ -1,0 +1,26 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.TestTask" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:background">@color/background</item>
+    </style>
+
+    <style name="Theme.TestTask.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="textView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="button" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">30sp</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:paddingEnd">30dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+</resources>
