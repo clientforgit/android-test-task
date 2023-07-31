@@ -3,7 +3,14 @@
     <string name="title_activity_count">CountActivity</string>
     <string name="result_count">Result count: %1$d</string>
     <string name="open">Open counter</string>
-    <string name="counter_amount">Counter: %1$d</string>
+    <string name="fragment_name_tv">Name: %1$s</string>
+    <string name="fragment_age_tv">Age: %1$d</string>
+    <string name="fragment_is_student_tv">Is student: %1$b</string>
     <string name="increase_counter">Increase counter</string>
     <string name="title_activity_container"/>
+    <string name="is_student">Is student:</string>
+    <string-array name="is_student_choices">
+        <item>false</item>
+        <item>true</item>
+    </string-array>
 </resources>

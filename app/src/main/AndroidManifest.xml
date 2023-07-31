@@ -13,18 +13,10 @@
         android:theme="@style/Theme.TestTask"
         tools:targetApi="31">
         <activity
-            android:name=".ContainerActivity"
-            android:parentActivityName=".CountActivity"
-            android:exported="false"
-            android:label="@string/title_activity_container"
-            android:theme="@style/Theme.TestTask"
-            android:configChanges="orientation|screenSize"/>
-        <activity
-            android:name=".CountActivity"
+            android:name=".UsersActivity"
             android:exported="true"
             android:label="@string/title_activity_count"
-            android:theme="@style/Theme.TestTask.NoActionBar"
-            android:configChanges="orientation|screenSize">
+            android:theme="@style/Theme.TestTask.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
