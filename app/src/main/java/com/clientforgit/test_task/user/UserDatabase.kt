@@ -28,7 +28,6 @@ abstract class UserDatabase: RoomDatabase() {
                     "user_database"
                 )
                     .createFromAsset("database/user.db")
-                    .fallbackToDestructiveMigration()
                     .build()
 
                 INSTANCE = newInstance

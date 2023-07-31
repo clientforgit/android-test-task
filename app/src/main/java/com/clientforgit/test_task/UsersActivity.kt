@@ -46,6 +46,15 @@ class UsersActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState, outPersistentState)
         for (position in recycleViewAdapter.changedUsersPosition) {
             userViewModel.updateUser(recycleViewAdapter.getUsers()[position])
+            recycleViewAdapter.changedUsersPosition = mutableSetOf()
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        for (position in recycleViewAdapter.changedUsersPosition) {
+            userViewModel.updateUser(recycleViewAdapter.getUsers()[position])
+        }
+        recycleViewAdapter.changedUsersPosition = mutableSetOf()
     }
 }

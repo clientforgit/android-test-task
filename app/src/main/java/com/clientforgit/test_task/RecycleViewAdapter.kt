@@ -20,7 +20,7 @@ class RecycleViewAdapter(private val onClickListener: (User) -> (Unit))
 
     private var userList = emptyList<User>()
 
-    val changedUsersPosition = mutableSetOf<Int>()
+    var changedUsersPosition = mutableSetOf<Int>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)
