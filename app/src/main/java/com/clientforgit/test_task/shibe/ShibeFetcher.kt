@@ -1,7 +1,6 @@
 package com.clientforgit.test_task.shibe
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,7 +32,6 @@ class ShibeFetcher(private var context: Context) {
     fun fetchList(passToAdapter: (List<Shibe>) -> Unit) {
         nicknameApi.getNickname().enqueue(object : Callback<List<String>> {
             override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
-                Log.d("test", response.message())
                 nicknameList = response.body()!!
                 createShibes(passToAdapter)
             }
