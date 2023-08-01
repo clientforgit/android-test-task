@@ -1,79 +1,43 @@
 package com.clientforgit.test_task
 
-import android.util.Log
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.clientforgit.test_task.user.User
+import com.clientforgit.test_task.shibe.Shibe
+import com.squareup.picasso.Picasso
 
 
-class RecycleViewAdapter(private val onClickListener: (User) -> (Unit))
-    : RecyclerView.Adapter<RecycleViewAdapter.UserViewHolder>(){
+class RecycleViewAdapter(private var context: Context)
+    : RecyclerView.Adapter<RecycleViewAdapter.ShibeViewHolder>(){
 
-    class UserViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    class ShibeViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    private var userList = emptyList<User>()
+    private var shibeList = mutableListOf<Shibe>()
 
-    var changedUsersPosition = mutableSetOf<Int>()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShibeViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)
-        return UserViewHolder(viewHolder)
+        return ShibeViewHolder(viewHolder)
     }
 
-    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val nameTextView = holder.itemView.findViewById<TextView>(R.id.name)
-        nameTextView.text = userList[position].name
+    override fun onBindViewHolder(holder: ShibeViewHolder, position: Int) {
+        val nicknameTextView = holder.itemView.findViewById<TextView>(R.id.nickname)
+        nicknameTextView.text = shibeList[position].nickname
         val ageTextView = holder.itemView.findViewById<TextView>(R.id.age)
-        ageTextView.text = userList[position].age.toString()
-
-       spinnerInit(holder)
-
-        holder.itemView.setOnClickListener {
-            Log.i("test for item", userList[position].isStudent.toString())
-            onClickListener(userList[position])
-        }
-    }
-
-    private fun spinnerInit(holder: UserViewHolder) {
-        val spinner = holder.itemView.findViewById<Spinner>(R.id.spinner)
-        val spinnerAdapter = ArrayAdapter.createFromResource(holder.itemView.context, R.array.is_student_choices, R.layout.spinner_item)
-
-        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-        spinner.adapter = spinnerAdapter
-
-        fun Boolean.toInt() = if (this) 1 else 0
-        fun Int.toBoolean() = this == 1
-        spinner.setSelection(userList[holder.adapterPosition].isStudent.toInt())
-        spinner.onItemSelectedListener = object : OnItemSelectedListener {
-
-            override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View, spinnerPosition: Int, id: Long
-            ) {
-                userList[holder.adapterPosition].isStudent = spinnerPosition.toBoolean()
-                changedUsersPosition.add(holder.adapterPosition)
-            }
-
-            override fun onNothingSelected(parentView: AdapterView<*>?) {
-            }
-        }
+        ageTextView.text = shibeList[position].age.toString()
+        val imageView = holder.itemView.findViewById<ImageView>(R.id.image_view)
+        Picasso.with(context).load(shibeList[position].image).into(imageView)
     }
 
     override fun getItemCount(): Int {
-        return userList.size
+        return shibeList.size
     }
 
-    fun setUsers(userList: List<User>) {
-        this.userList = userList
+    fun addShibes(shibeList: List<Shibe>) {
+        this.shibeList.addAll(shibeList)
         notifyDataSetChanged()
-    }
-
-    fun getUsers(): List<User> {
-        return this.userList
     }
 }

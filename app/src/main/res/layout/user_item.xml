@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -8,18 +8,26 @@
     android:theme="@style/Theme.TestTask.ItemTheme"
     android:layout_margin="10dp"
     app:justifyContent="space_between"
-    app:alignItems="center">
+    app:alignItems="center"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_marginTop="30dp"
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/shibe_photo" />
+
+
+    <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:gravity="start"
-        android:layout_gravity="start"
-        android:orientation="vertical">
+        app:justifyContent="space_between"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/gray"
@@ -34,34 +42,6 @@
             style="@style/textView"
             tools:text="Age"/>
 
-    </LinearLayout>
+    </com.google.android.flexbox.FlexboxLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:minWidth="220dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/textView"
-            android:textSize="20sp"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:maxLines="1"
-            android:text="@string/is_student"/>
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/is_student_choices"
-            android:spinnerMode="dropdown"
-            android:dropDownVerticalOffset="40dp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"/>
-
-    </LinearLayout>
-
-</com.google.android.flexbox.FlexboxLayout>
+</LinearLayout>
