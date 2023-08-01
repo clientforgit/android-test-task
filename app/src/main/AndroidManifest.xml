@@ -16,7 +16,7 @@
             android:name=".UsersActivity"
             android:exported="true"
             android:label="@string/title_activity_count"
-            android:theme="@style/Theme.TestTask.NoActionBar">
+            android:theme="@style/Theme.TestTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

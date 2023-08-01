@@ -2,6 +2,8 @@ package com.clientforgit.test_task
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -15,7 +17,8 @@ import com.clientforgit.test_task.user.UserViewModel
 class UsersActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUsersBinding
-    private lateinit var fragment: UserFragment
+    private lateinit var userFragment: UserFragment
+    private lateinit var addUserFragment: AddUserFragment
     private lateinit var userViewModel: UserViewModel
     private lateinit var recycleViewAdapter: RecycleViewAdapter
 
@@ -38,8 +41,8 @@ class UsersActivity : AppCompatActivity() {
 
     private fun invokeFragment(user: User) {
         userViewModel.selected = user
-        fragment = UserFragment()
-        fragment.show(supportFragmentManager, "UsersFragment")
+        userFragment = UserFragment()
+        userFragment.show(supportFragmentManager, "UsersFragment")
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
@@ -56,5 +59,20 @@ class UsersActivity : AppCompatActivity() {
             userViewModel.updateUser(recycleViewAdapter.getUsers()[position])
         }
         recycleViewAdapter.changedUsersPosition = mutableSetOf()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_bar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.add_user -> {
+                addUserFragment = AddUserFragment { binding.recyclerView.adapter?.notifyDataSetChanged() }
+                addUserFragment.show(supportFragmentManager, "AddUsersFragment")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

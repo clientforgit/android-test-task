@@ -2,6 +2,7 @@ package com.clientforgit.test_task.user
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 
@@ -12,4 +13,7 @@ interface UserDao {
 
     @Query("SELECT * FROM users")
     fun getAllUsers(): LiveData<List<User>>
+
+    @Insert
+    suspend fun addUser(user: User)
 }
