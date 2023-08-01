@@ -23,6 +23,7 @@ class UserFragment : DialogFragment(R.layout.fragment_users) {
 
         binding.fragmentUserName.text = getString(R.string.fragment_name_tv, userViewModel.selected.name)
         binding.fragmentUserAge.text = getString(R.string.fragment_age_tv, userViewModel.selected.age)
+        binding.fragmentUserDateOfBirth.text = getString(R.string.fragment_date_of_birth_tv, userViewModel.selected.dateOfBirth)
         binding.fragmentUserIsStudent.text = getString(R.string.fragment_is_student_tv, userViewModel.selected.isStudent)
 
         return binding.root
